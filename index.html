@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#04060d">
+<meta name="color-scheme" content="dark">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Bluff</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ MENU ============ -->
+<section id="screen-menu" class="screen active">
+  <div class="menu-box">
+    <div class="logo">
+      <div class="logo-cards" aria-hidden="true">
+        <span class="mc c1"><b>3</b><i>♥</i></span>
+        <span class="mc c2"><b>A</b><i>♠</i></span>
+        <span class="mc c3"><b>4</b><i>♣</i></span>
+      </div>
+      <h1>Bluff</h1>
+      <p>2 a 4 jogadores. Online entre celular, tablet e computador, ou contra o computador.</p>
+    </div>
+    <button class="btn btn-orange" data-go="online">Modo Online</button>
+    <button class="btn btn-green" data-go="local">Modo Local</button>
+    <button class="btn btn-ghost" id="btn-rules">Como jogar</button>
+  </div>
+</section>
+
+<!-- ============ MODO LOCAL ============ -->
+<section id="screen-local" class="screen">
+  <div class="panel">
+    <button class="back" data-go="menu">‹ Voltar</button>
+    <h2>Modo Local</h2>
+    <p class="hint">Jogue neste aparelho contra o computador.</p>
+    <label class="field">Seu nome
+      <input id="local-name" maxlength="14" placeholder="Seu nome" autocomplete="off">
+    </label>
+    <div class="field">Jogadores
+      <div class="seg" id="local-size">
+        <button data-v="2">2 · 1 contra 1</button>
+        <button data-v="3">3 · cada um por si</button>
+        <button data-v="4" class="on">4 · duplas</button>
+      </div>
+    </div>
+    <button class="btn btn-orange" id="btn-local-start">Jogar</button>
+  </div>
+</section>
+
+<!-- ============ MODO ONLINE ============ -->
+<section id="screen-online" class="screen">
+  <div class="panel">
+    <button class="back" data-go="menu">‹ Voltar</button>
+    <h2>Modo Online</h2>
+    <p class="hint">Todos abrem este mesmo site, no aparelho que quiser: um cria a sala e os outros entram com o código.</p>
+    <label class="field">Seu nome
+      <input id="online-name" maxlength="14" placeholder="Seu nome" autocomplete="off">
+    </label>
+
+    <div class="split">
+      <div class="box">
+        <h3>Criar sala</h3>
+        <div class="field">Jogadores na sala
+          <div class="seg" id="online-size">
+            <button data-v="2">2</button>
+            <button data-v="3">3</button>
+            <button data-v="4" class="on">4</button>
+          </div>
+        </div>
+        <button class="btn btn-orange" id="btn-create">Criar sala</button>
+      </div>
+
+      <div class="box">
+        <h3>Entrar em uma sala</h3>
+        <label class="field">Código da sala
+          <input id="join-code" maxlength="5" placeholder="ABCDE" autocomplete="off" autocapitalize="characters">
+        </label>
+        <button class="btn btn-green" id="btn-join">Entrar</button>
+      </div>
+    </div>
+    <p class="status" id="online-status"></p>
+  </div>
+</section>
+
+<!-- ============ SALA / LOBBY ============ -->
+<section id="screen-lobby" class="screen">
+  <div class="panel">
+    <button class="back" id="btn-lobby-exit">‹ Sair da sala</button>
+    <h2>Sala</h2>
+    <div class="code-box">
+      <span class="code" id="lobby-code">-----</span>
+      <div class="code-actions">
+        <button class="btn btn-small" id="btn-copy-code">Copiar código</button>
+        <button class="btn btn-small" id="btn-copy-link">Copiar link</button>
+      </div>
+    </div>
+    <p class="hint" id="lobby-hint"></p>
+    <ul class="seats" id="lobby-seats"></ul>
+    <div id="lobby-host-actions">
+      <button class="btn btn-ghost" id="btn-add-bot">Adicionar computador</button>
+      <button class="btn btn-orange" id="btn-start">Iniciar partida</button>
+    </div>
+    <p class="status" id="lobby-status"></p>
+  </div>
+</section>
+
+<!-- ============ MESA ============ -->
+<section id="screen-game" class="screen">
+  <div id="table">
+    <div id="score"></div>
+    <div id="manilhas"></div>
+    <div id="viraBox"></div>
+
+    <div id="pods"></div>
+    <div id="center"></div>
+    <div id="hand"></div>
+    <div id="partnerHand"></div>
+
+    <div class="topbtns">
+      <button id="btn-emoji" aria-label="Reações">😊</button>
+      <button id="btn-chat" aria-label="Frases rápidas">💬</button>
+      <button id="btn-menu" aria-label="Menu">☰</button>
+    </div>
+
+    <div id="sidepanel" class="hidden"></div>
+
+    <button id="btnTruco" class="hidden">TRUCO!</button>
+    <div id="banner"></div>
+    <div id="prompt" class="hidden"></div>
+  </div>
+</section>
+
+<!-- Modal genérico -->
+<div id="modal" class="hidden"></div>
+<div id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
